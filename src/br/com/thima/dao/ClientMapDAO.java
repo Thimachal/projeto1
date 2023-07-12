@@ -33,14 +33,14 @@ public class ClientMapDAO implements IClientDAO{
 
     @Override
     public void alter(Client client) { //cliente é o que está recebendo da tela e client register é o do map, já cadastrado
-        Client clientRegister = this.map.get(client.getCpf());
-        if (clientRegister != null){
-            clientRegister.setName(client.getName());
-            clientRegister.setTel(client.getTel());
-            clientRegister.setNumber(client.getNumber());
-            clientRegister.setName(client.getAdsress());
-            clientRegister.setCity(client.getCity());
-            clientRegister.setState(client.getState());
+        Client clientRegistered = this.map.get(client.getCpf());
+        if (clientRegistered != null){
+            clientRegistered.setName(client.getName());
+            clientRegistered.setTel(client.getTel());
+            clientRegistered.setNumber(client.getNumber());
+            clientRegistered.setName(client.getAdsress());
+            clientRegistered.setCity(client.getCity());
+            clientRegistered.setState(client.getState());
         }
     }
 
