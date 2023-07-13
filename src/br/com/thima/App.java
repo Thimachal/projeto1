@@ -61,17 +61,17 @@ public class App {
     private static void atualizar(String dados) {
         String[] dadosSeparados = dados.split(",");
         Client cliente = new Client(dadosSeparados[0],dadosSeparados[1],dadosSeparados[2],dadosSeparados[3],dadosSeparados[4],dadosSeparados[5],dadosSeparados[6]);
-        iClienteDAO.alter(cliente);
+        iClientDAO.alter(cliente);
     }
 
     private static void excluir(String dados) {
-        iClienteDAO.delete(Long.parseLong(dados));
+        iClientDAO.delete(Long.parseLong(dados));
         JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso: ", "Sucesso",JOptionPane.INFORMATION_MESSAGE);
     }
 
 
     private static void consultar(String dados) {
-        Client cliente = iClienteDAO.consult(Long.parseLong(dados));
+        Client cliente = iClientDAO.consult(Long.parseLong(dados));
         if (cliente != null) {
             JOptionPane.showMessageDialog(null, "Cliente encontrado com sucesso: " + cliente.toString(), "Sucesso",JOptionPane.INFORMATION_MESSAGE);
         } else {
@@ -83,7 +83,7 @@ public class App {
     private static void cadastrar(String dados) {
         String[] dadosSeparados = dados.split(",");
         Client cliente = new Client(dadosSeparados[0],dadosSeparados[1],dadosSeparados[2],dadosSeparados[3],dadosSeparados[4],dadosSeparados[5],dadosSeparados[6]);
-        Boolean isCadastrado = iClienteDAO.register(cliente);
+        Boolean isCadastrado = iClientDAO.register(cliente);
         if (isCadastrado) {
             JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso ", "Sucesso",JOptionPane.INFORMATION_MESSAGE);
         } else {
@@ -114,7 +114,7 @@ public class App {
     }
     private static void sair() {
         String clientesCadastrados = "";
-        for (Client client : iClienteDAO.searchAll()) {
+        for (Client client : iClientDAO.searchAll()) {
             clientesCadastrados += client.toString() + "\n";
         }
 
