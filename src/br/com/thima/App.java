@@ -9,10 +9,10 @@ import javax.swing.*;
 
 public class App {
 
-    private static IClientDAO iClienteDAO;
+    private static IClientDAO iClientDAO;
 
     public static void main(String args[]) {
-        iClienteDAO = new ClientSetDAO();
+        iClientDAO = new ClientSetDAO();
 
         String opcao = JOptionPane.showInputDialog(null,
                 "Digite 1 para cadastro, 2 para consultar, 3 para exclusão, 4 para alteração ou 5 para sair",
@@ -56,11 +56,8 @@ public class App {
             opcao = JOptionPane.showInputDialog(null,
                     "Digite 1 para cadastro, 2 para consulta, 3 para cadastro, 4 para alteração ou 5 para sair",
                     "Green dinner", JOptionPane.INFORMATION_MESSAGE);
-
         }
-
     }
-
     private static void atualizar(String dados) {
         String[] dadosSeparados = dados.split(",");
         Client cliente = new Client(dadosSeparados[0],dadosSeparados[1],dadosSeparados[2],dadosSeparados[3],dadosSeparados[4],dadosSeparados[5],dadosSeparados[6]);
@@ -115,7 +112,6 @@ public class App {
         }
         return false;
     }
-
     private static void sair() {
         String clientesCadastrados = "";
         for (Client client : iClienteDAO.searchAll()) {
@@ -125,14 +121,12 @@ public class App {
         JOptionPane.showMessageDialog(null, "Clientes cadastrados: " + clientesCadastrados, "Até logo",JOptionPane.INFORMATION_MESSAGE);
         System.exit(0);
     }
-
     private static boolean isOpcaoSair(String opcao) {
         if ("5".equals(opcao)) {
             return true;
         }
         return false;
     }
-
     private static boolean isOpcaoValida(String opcao) {
         if ("1".equals(opcao) || "2".equals(opcao)
                 || "3".equals(opcao) || "4".equals(opcao) || "5".equals(opcao)) {
@@ -140,5 +134,4 @@ public class App {
         }
         return false;
     }
-
 }
